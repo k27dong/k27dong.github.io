@@ -3,10 +3,11 @@ it's a blog
 
 ## Feb. 11 Update:
 - opened the comment section
+- opened a chat room
 - added the about page
-- fixed a problem where the word count is not shown accuratly
 - added 'fork me on Github'
 - added clustrmaps in the sidebar
+- fixed a problem where the word count is not shown accuratly
 - removed post previews on the homepage
 - removed the media player
 - minor appearances and performance improvements
