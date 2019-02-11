@@ -234,7 +234,7 @@ $(document).ready(function() {
           e: $(element),
           p: {translateX: translateX},
           o: {
-            duration     : 500,
+            duration     : 400,
             sequenceQueue: false
           }
         };
@@ -294,7 +294,7 @@ $(document).ready(function() {
 
       $('.menu-item').velocity('transition.slideDownIn', {
         display : null,
-        duration: 200,
+        duration: 150,
         complete: function() {
           integrator.next();
         }
