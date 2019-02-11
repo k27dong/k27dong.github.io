@@ -13,6 +13,7 @@ it's a blog
 
 ## Feb. 9 Update:
 - added the sidebar which is displaying personal information
+- added a media player
 - tags & categories no long links to an empty page
 
 ## Acknowledgments
