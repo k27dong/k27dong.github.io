@@ -2,9 +2,11 @@
 it's a blog
 
 ## Feb. 11 Update:
-- added the comment section (Gitment)
-- added about & music page
+- opened the comment section
+- added the about page
 - fixed a problem where the word count is not shown accuratly
+- added 'fork me on Github'
+- added clustrmaps in the sidebar
 - removed post previews on the homepage
 - removed the media player
 - minor appearances and performance improvements
