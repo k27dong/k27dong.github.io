@@ -10,7 +10,7 @@ it's a blog
 - fixed a problem where the word count is not shown accuratly
 - removed post previews on the homepage
 - removed the media player
-- minor appearances and performance improvements
+- minor appearance and performance improvements
 
 ## Feb. 9 Update:
 - added the sidebar which is displaying personal information

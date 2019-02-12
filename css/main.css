@@ -1956,7 +1956,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #579fd9;
+  background: #cbfcff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2986,6 +2986,7 @@ hr {
   padding: 10px 20px;
   -webkit-box-shadow: 0 0 5px #cacbcb;
   -moz-box-shadow: 0 0 5px #cacbcc;
+  background-color: rgba(255,255,255,0.8);
 }
 .gitter-open-chat-button {
   right: 20px;
