@@ -536,7 +536,8 @@
       <div class="footer-inner">
         <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i> 
+    
   </span>
   <span class="author" itemprop="copyrightHolder">Kefan Dong</span>
 
@@ -553,8 +554,33 @@
   </span>
   
 
+<div style="display:inline;">
+<span class="post-meta-divider">|</span>
+<span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+</span>
+<span style="display:inline;" id="timeDate">Loading...</span><span style="display:inline;" id="times"></span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("02/08/2019 01:12:00");
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "Running  "+dnum+" days ";
+        document.getElementById("times").innerHTML = hnum + ":" + mnum + ":" + snum;
+    }
+setInterval("createtime()",250);
+</script>
+</div>
+
   
 </div>
+
 
 
 

@@ -4,6 +4,8 @@ it's a blog
 ## Feb. 13 Update:
 - added view count (<a href="https://busuanzi.ibruce.info/">busuanzi</a>)
 - added a cool background on the about page
+- added a time counter for the number of days running
+- added a pumping heart in the footer
 - removed edited timestamp
 - updated social media links
 - minor appearance and performance improvements
