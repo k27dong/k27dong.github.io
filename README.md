@@ -1,8 +1,13 @@
 # k27dong.github.io
 it's a blog
 
+## Feb. 13 Update:
+- added view count (busuanzi)
+- removed edited timestamp
+- updated social media links
+
 ## Feb. 12 Update:
-- opened the categories page
+- opened categories page
 - redesigned the comment section, now only appears in certain pages
 
 ## Feb. 11 Update:
