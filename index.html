@@ -47,6 +47,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
 
 
 
@@ -82,7 +86,7 @@
     scheme: 'Mist',
     version: '7.0.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -932,7 +936,7 @@
 
     function calculate_time() {
       var running = new Date("02/08/2019 01:12:00"); // starting date
-      now.setTime(now.getTime());
+      now.setTime(now.getTime() + 250);
 
       days = (now - running) / 1000 / 60 / 60 / 24;
       whole_days = Math.floor(days);
@@ -959,7 +963,7 @@
       document.getElementById("times").innerHTML = whole_hours + ":" + whole_mins + ":" + whole_sec;
     }
 
-    setInterval("calculate_time()",250);
+    setInterval("calculate_time()", 250);
   </script>
 </div>
 
@@ -1035,6 +1039,8 @@
 
 
 
+  
+
 
 
 
@@ -1057,6 +1063,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   

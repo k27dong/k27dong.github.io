@@ -7,6 +7,7 @@ it's a blog
 - added a <a href="https://github.com/hustcc/canvas-nest.js">cool effect</a> on the about page
 - added a time counter for the number of days running
 - added a pumping heart in the footer
+- fixed a problem where <a href="https://github.com/theme-next/theme-next-pace">pace</a> is not functioning
 - removed edited timestamp
 - updated social media links
 - minor appearance and performance improvements
