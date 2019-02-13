@@ -405,7 +405,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -420,7 +420,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -519,33 +521,57 @@
       <span class="post-meta-item-text">Word count total: </span>
     
     <span title="Word count total">
-    2k
+    2.3k
   </span>
   
 
 <div style="display:inline;">
-<span class="post-meta-divider">|</span>
-<span class="post-meta-item-icon">
+  <span class="post-meta-divider">|</span>
+
+  <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
-</span>
-<span style="display:inline;" id="timeDate">Loading...</span><span style="display:inline;" id="times"></span>
+  </span>
+
+  <span id="timeDate">Loading...</span>
+  <span id="times"></span>
+
 <script>
     var now = new Date();
-    function createtime() {
-        var grt= new Date("02/08/2019 01:12:00");
-        now.setTime(now.getTime()+250);
-        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
-        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
-        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
-        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
-        document.getElementById("timeDate").innerHTML = "Running  "+dnum+" days ";
-        document.getElementById("times").innerHTML = hnum + ":" + mnum + ":" + snum;
+
+    function calculate_time() {
+      var running = new Date("02/08/2019 01:12:00"); // starting date
+      now.setTime(now.getTime());
+
+      days = (now - running) / 1000 / 60 / 60 / 24;
+      whole_days = Math.floor(days);
+      hours = (now - running) / 1000 / 60 / 60 - (24 * whole_days);
+      whole_hours = Math.floor(hours);
+      minutes = (now - running) / 1000 /60 - (24 * 60 * whole_days) - (60 * whole_hours);
+      whole_mins = Math.floor(minutes);
+      seconds = (now - running ) / 1000 - (24 * 60 * 60 * whole_days) - (60 * 60 * whole_hours) - (60 * whole_mins);
+      whole_sec = Math.round(seconds);
+
+      if(String(whole_hours).length == 1){
+        whole_hours = "0" + whole_hours;
+      } 
+
+      if(String(whole_mins).length == 1) {
+        whole_mins = "0" + whole_mins;
+      }
+      
+      if(String(whole_sec).length == 1) {
+        whole_sec = "0" + whole_sec;
+      }
+      
+      document.getElementById("timeDate").innerHTML = "Running  " + whole_days + " days ";
+      document.getElementById("times").innerHTML = whole_hours + ":" + whole_mins + ":" + whole_sec;
     }
-setInterval("createtime()",250);
-</script>
+
+    setInterval("calculate_time()",250);
+  </script>
 </div>
+
+
 
   
 </div>
