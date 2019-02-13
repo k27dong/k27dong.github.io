@@ -6,7 +6,7 @@ it's a blog
 - added a cool background on the about page
 - removed edited timestamp
 - updated social media links
-
+- minor appearance and performance improvements
 
 ## Feb. 12 Update:
 - opened categories page
