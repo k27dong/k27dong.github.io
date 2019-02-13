@@ -2,20 +2,22 @@
 it's a blog
 
 ## Feb. 13 Update:
-- added view count (busuanzi)
+- added view count (<a href="https://busuanzi.ibruce.info/">busuanzi</a>)
+- added a cool background on the about page
 - removed edited timestamp
 - updated social media links
+
 
 ## Feb. 12 Update:
 - opened categories page
 - redesigned the comment section, now only appears in certain pages
 
 ## Feb. 11 Update:
-- opened the comment section
-- opened a chat room
+- opened the comment section (<a href="https://github.com/gitalk/gitalk">gitalk</a>)
+- opened a chat room using <a href="https://gitter.im">gitter</a>
 - added the about page
 - added 'fork me on Github'
-- added clustrmaps in the sidebar
+- added <a href="https://clustrmaps.com/">clustrmaps</a> in the sidebar
 - fixed a problem where the word count is not shown accuratly
 - removed post previews on the homepage
 - removed the media player
