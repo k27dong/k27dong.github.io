@@ -1,6 +1,10 @@
 # k27dong.github.io
 it's a blog
 
+## Feb. 12 Update:
+- opened the categories page
+- redesigned the comment section, now only appears in certain pages
+
 ## Feb. 11 Update:
 - opened the comment section
 - opened a chat room
