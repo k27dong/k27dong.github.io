@@ -2,7 +2,7 @@
 it's a blog
 
 ## Feb. 13 Update:
-- deployed the website to <a href="ke-fan.me">ke-fan.me</a>
+- deployed the website to <a href="http://ke-fan.me">ke-fan.me</a>
 - added view count (<a href="https://busuanzi.ibruce.info/">busuanzi</a>)
 - added a cool background on the about page
 - added a time counter for the number of days running
