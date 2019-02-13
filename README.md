@@ -4,7 +4,7 @@ it's a blog
 ## Feb. 13 Update:
 - deployed the website to <a href="http://ke-fan.me">ke-fan.me</a>
 - added view count (<a href="https://busuanzi.ibruce.info/">busuanzi</a>)
-- added a cool background on the about page
+- added a <a href="https://github.com/hustcc/canvas-nest.js">cool effect</a> on the about page
 - added a time counter for the number of days running
 - added a pumping heart in the footer
 - removed edited timestamp
