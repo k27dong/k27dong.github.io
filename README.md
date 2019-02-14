@@ -1,6 +1,10 @@
 # k27dong.github.io
 it's a blog
 
+## Feb. 14 Update:
+- Reduced the amount of blank between each post in the front page, now posts are more compact with each other
+- Reduced the amount of blank space in each post
+
 ## Feb. 13 Update:
 - deployed the website to <a href="http://ke-fan.me">ke-fan.me</a>
 - added view count (<a href="https://busuanzi.ibruce.info/">busuanzi</a>)
