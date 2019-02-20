@@ -2,7 +2,7 @@
 it's a blog
 
 ## Feb. 20 Update:
-- now support MathJax languages 
+- now support MathJax language
 
 ## Feb. 19 Update:
 - added 'Donate' button
