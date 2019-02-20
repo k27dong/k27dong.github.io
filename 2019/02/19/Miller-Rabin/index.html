@@ -114,7 +114,7 @@
 <meta property="og:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/riemman_zeta.jpg">
-<meta property="og:updated_time" content="2019-02-20T18:03:13.788Z">
+<meta property="og:updated_time" content="2019-02-20T21:15:31.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miller-Rabin 素性测试">
 <meta name="twitter:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
@@ -399,7 +399,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-20 13:03:13" itemprop="dateModified" datetime="2019-02-20T13:03:13-05:00">2019-02-20</time>
+                <time title="Modified: 2019-02-20 16:15:31" itemprop="dateModified" datetime="2019-02-20T16:15:31-05:00">2019-02-20</time>
               
             
             -->
@@ -423,7 +423,7 @@
 
                 <span title="Symbols count in article">
                 <!-- word count -->
-                1.4k
+                1.8k
                 </span>
               
 
@@ -442,7 +442,7 @@
                 
                 <span title="Reading time">
                 <!-- reading time approximation -->
-                3 mins
+                4 mins
               </span>
               
             </div>
@@ -470,7 +470,7 @@
           
           <!--
           Reading time
-          3 mins.
+          4 mins.
           -->
 
           
@@ -505,8 +505,23 @@ a^p \equiv a\;(mod\,p)  \\\\
 a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定理是判断一个数是否为素数的必要条件，但不是充分条件。有一些“伪素数”也可以达成这个条件。比如</p>
 <script type="math/tex; mode=display">
 2^{341-1} \equiv 1\;(mod\,341)  \\\\
-341 = 11 \times 31</script><h3 id="Fermat素性测试"><a href="#Fermat素性测试" class="headerlink" title="Fermat素性测试"></a>Fermat素性测试</h3><p>因为有上述情况的出现，人们引进了“伪素数”这个概念“。称满足\(a^{n-1} \equiv 1\;(mod\,n) \) 的和数\(n\)为“一个以\(a\)底的伪素数”。<br>出于同样的原因，可以看出费马小定理在有些时候并不完全适用。但我们却可以通过多次测试来提高准确度。比如上图中，341通过了\(a=2\,\)的测试，但如果\(a=3\,\)我们就可以看出它是一个合数。在前十亿个自然数中，只有1272个伪素数可以同时通过\(a\,\)为2和3的测试。这个几率是\( 0.001 \unicode{x2030}\)，已经非常小了。可以看出，用来测试的\(a\)越多，算法就会越准确。通常来说的做法是，随机选择数个\(a\)进行若干测试，如果每次都通过了测试，可判定这个数为素数。<br>然而，漏网之鱼还是存在的。在某些情况下，即使选择了所有小于\(n\)，并与其互素的底数\(a\)，这个数依旧可以通过所有的测试。<a href="https://en.wikipedia.org/wiki/Robert_Daniel_Carmichael" target="_blank" rel="noopener">Robert Carmichael</a>是第一个发现这种数的人，于是这种极端的伪素数也就被称为Carmichael数。违反直觉的是，这种数字并不是特别稀有，在上述的1200多个数里，有600多个都是Carmichael数。最小的一个仅为561。这种缺陷的存在，说明这种判断的严谨性尚有不足，需要一个更加完善的算法。</p>
-<h2 id="Miller-Rabin-素性测试"><a href="#Miller-Rabin-素性测试" class="headerlink" title="Miller-Rabin 素性测试"></a>Miller-Rabin 素性测试</h2><h3 id="阐述"><a href="#阐述" class="headerlink" title="阐述"></a>阐述</h3><h3 id="C-中的实现"><a href="#C-中的实现" class="headerlink" title="C++中的实现"></a>C++中的实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_probable_prime</span> <span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    assert (n &gt; <span class="number">3</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">1</span>, d;</span><br><span class="line">    <span class="keyword">bool</span> status = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">int</span> m = (n - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;  <span class="comment">// N-1 -&gt; (2^s)*d</span></span><br><span class="line">        <span class="keyword">if</span> (m % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            s++;</span><br><span class="line">            m /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            d = m;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;   <span class="comment">// check the primality k times</span></span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span> + (rand() % <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(n - <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span> (is_composite(a, d, n, s)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;    <span class="comment">// if the number passes all tests, it is most likely a prime number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// check if N is a composite number with base a</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_composite</span> <span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> d, <span class="keyword">int</span> n, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>((<span class="keyword">double</span>)a, (<span class="keyword">double</span>)d)) % n == <span class="number">1</span>) &#123;  <span class="comment">// (a^d)%n</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; s; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>((<span class="keyword">double</span>)a, (<span class="built_in">pow</span>(<span class="number">2.0</span>, (<span class="keyword">double</span>)j) * d))) % n == n - <span class="number">1</span>) &#123;  <span class="comment">// (a^((2^i)*d))%n</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// up to this point N must be a composite number</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+341 = 11 \times 31</script><h3 id="Fermat素性测试"><a href="#Fermat素性测试" class="headerlink" title="Fermat素性测试"></a>Fermat素性测试</h3><p>因为有上述情况的出现，人们引进了“伪素数”这个概念“。称满足\(\,a^{n-1} \equiv 1\;(mod\,n) \) 的和数\(n\)为“一个以\(\,a\,\)为底的伪素数”。<br>出于同样的原因，可以看出费马小定理在有些时候并不完全适用。但我们却可以通过多次测试来提高准确度。比如上图中，341通过了\(a=2\,\)的测试，但如果再次测试\(a=3\,\)，我们就可以看出它是一个合数。在前十亿个自然数中，只有1272个伪素数可以同时通过\(a\,\)为2和3的测试。这个几率是\( 0.001 \unicode{x2030}\)，已经非常小了。可以看出，用来测试的\(a\)越多，算法就会越准确。通常来说的做法是，随机选择数个\(\,a\,\)进行若干测试，如果每次都通过了测试，可判定这个数为素数。</p>
+<p>然而漏网之鱼还是存在的。在某些情况下，即使选择了所有小于\(n\)并与其互素的底数\(a\)，这个数依旧可以通过所有的测试。<a href="https://en.wikipedia.org/wiki/Robert_Daniel_Carmichael" target="_blank" rel="noopener">Robert Carmichael</a>是第一个发现这种数的人，于是这种极端的伪素数也就被称为Carmichael数。违反直觉的是，这种数字并不是特别稀有，在上述的1200多个数里，有600多个都是Carmichael数。最小的一个仅为561。这种缺陷的存在，说明这种判断的严谨性尚有不足，需要一个更加完善的算法。<br><br></p>
+<h2 id="Miller-Rabin-素性测试"><a href="#Miller-Rabin-素性测试" class="headerlink" title="Miller-Rabin 素性测试"></a>Miller-Rabin 素性测试</h2><p>苏联数学家M. M. Artjuhov在1966年首次提出了这个想法，然而不知道因为什么原因，并没有掀起什么波浪（wiki上也只有短短一句话说明）。直到十年后的1976年，Gary Miller才在他的PHD论文“Riemann’s Hypothesis and Tests for Primality”中独立地重新发现了这个理论。这个算法的正确性基于广义黎曼猜想，而这个猜想至今并未被证明（虽然极可能是正确的）。后来经过Michael Rabin（拉宾）的改造，变成了一个依赖于二次探测定理的非确定性算法。</p>
+<h3 id="阐述"><a href="#阐述" class="headerlink" title="阐述"></a>阐述</h3><p>判断\(\,N\,\)是否是为素数：</p>
+<ul>
+<li>确定\(\,N\,\)是一个大于2的奇数</li>
+<li>将\(\,N-1\,\)化为\(\,2^sd\,\)的形式（\(\,N-1\,\)为偶数，\(\,d\,\)为奇数）</li>
+<li>随机选取整数\(\,a\in(0,\,N)\,\)</li>
+<li>对所有整数\(\,r \in [0, \,s-1]\,\)进行运算：</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 判断 \(\,a^d\neq1  \;(mod \,N) \,\) </li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 判断 \(\,a^{2^{r}d}\neq -1 \;(mod \,N)\,\) </li>
+<li>若上述两个条件均符合，则称\(\,N\,\)通过Miller-Rabin测试。</li>
+<li>如果\(\,N\,\)不通过测试，则\(\,N\,\)一定为合数</li>
+<li>如果\(\,N\,\)通过测试，则\(\,N\,\)有\(\,\frac{3}{4}\,\)的几率为素数（误差率\(\,\le\frac{1}{4}\,\)）</li>
+</ul>
+<p>在这个过程中只取了一次随机数\(\,a\,\)。类似于Fermat测试，通过重复取\(\,k\,\)次不同的随机值，准确率可以上升到\(\,1-(\frac{1}{4})^k\,\)。然而这也只是一个很保守的估计，实际效果要好得多。</p>
+<h3 id="C-中的实现"><a href="#C-中的实现" class="headerlink" title="C++中的实现"></a>C++中的实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_probable_prime</span> <span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    assert (n &gt; <span class="number">3</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> s = <span class="number">1</span>, d;</span><br><span class="line">    <span class="keyword">bool</span> status = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">int</span> m = (n - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;  <span class="comment">// N-1 -&gt; (2^s)*d</span></span><br><span class="line">        <span class="keyword">if</span> (m % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            s++;</span><br><span class="line">            m /= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            d = m;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;   <span class="comment">// check the primality k times</span></span><br><span class="line">        <span class="keyword">int</span> a = <span class="number">1</span> + (rand() % <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(n - <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span> (is_composite(a, d, n, s)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;    <span class="comment">// if the number passes all tests, it is most likely a prime number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// check if N is a composite number with base a</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_composite</span> <span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> d, <span class="keyword">int</span> n, <span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>((<span class="keyword">double</span>)a, (<span class="keyword">double</span>)d)) % n == <span class="number">1</span>) &#123;  <span class="comment">// (a^d)%n</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; s; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">long</span> <span class="keyword">long</span>)(<span class="built_in">pow</span>((<span class="keyword">double</span>)a, (<span class="built_in">pow</span>(<span class="number">2.0</span>, (<span class="keyword">double</span>)j) * d))) % n == n - <span class="number">1</span>) &#123;  <span class="comment">// (a^((2^i)*d))%n</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// up to this point N must be a composite number</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="大素数的生成"><a href="#大素数的生成" class="headerlink" title="大素数的生成"></a>大素数的生成</h3><h3 id="随机数的问题"><a href="#随机数的问题" class="headerlink" title="随机数的问题"></a>随机数的问题</h3><p></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
       
@@ -549,7 +564,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
         <div style="padding: 10px 0; margin: 20px auto;margin-bottom: 0px; width: 90%; text-align: center;">
   <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>COFFEE</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -784,6 +799,8 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
       </div>
     </main>
 
+    
+
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span>
@@ -802,7 +819,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
       <span class="post-meta-item-text">Word count total: </span>
     
     <span title="Word count total">
-    3.8k
+    4.2k
   </span>
   
 
