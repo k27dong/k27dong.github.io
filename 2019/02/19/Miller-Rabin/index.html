@@ -106,18 +106,18 @@
 
 
 
-  <meta name="description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(Mn = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点">
+  <meta name="description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Miller-Rabin 素性测试">
 <meta property="og:url" content="http://yoursite.com/2019/02/19/Miller-Rabin/index.html">
 <meta property="og:site_name" content="Kefan">
-<meta property="og:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(Mn = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点">
+<meta property="og:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/riemman_zeta.jpg">
-<meta property="og:updated_time" content="2019-02-20T17:42:07.478Z">
+<meta property="og:updated_time" content="2019-02-20T17:47:21.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miller-Rabin 素性测试">
-<meta name="twitter:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(Mn = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点">
+<meta name="twitter:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta name="twitter:image" content="http://yoursite.com/images/riemman_zeta.jpg">
 
 
@@ -399,7 +399,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-20 12:42:07" itemprop="dateModified" datetime="2019-02-20T12:42:07-05:00">2019-02-20</time>
+                <time title="Modified: 2019-02-20 12:47:21" itemprop="dateModified" datetime="2019-02-20T12:47:21-05:00">2019-02-20</time>
               
             
             -->
@@ -489,7 +489,7 @@
 
       
         <p><em>待续</em></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M<em>n = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如\(M</em>{11} = 2047 = 23 \times 89 \)就不是素数。想要一次彻底解决这个问题，突破口在于黎曼\(\zeta\)函数。</p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如\(M_{11} = 2047 = 23 \times 89 \)就不是素数。想要一次彻底解决这个问题，突破口在于黎曼\(\zeta\)函数。</p>
 <p><img src="/images/riemman_zeta.jpg" alt="Zeta" title="Riemann Zeta Function" width="40%" height="40%"></p>
 <p>按黎曼猜想所言，如果我们知道了黎曼\(\zeta\)函数的所有非平凡零点的精确位置，那么就有了计算素数计数函数的精确公式。即使无法预测精确位置，只是知道一些大致方向，或许也可以从此推断出素数分布的一些特性。然而自猜想提出已经过了160年，数学家依然在这个问题上束手无策。最近不断有传闻说某个教授又证明了黎曼猜想，但至今也没有一个明确的消息。</p>
 <p>关于\(\zeta\)函数部分要展开过于漫长，我们先从一个更简单的问题开始讨论：给一个大整数N，如何判断其是否为素数？</p>
@@ -1058,7 +1058,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
       }
   });
 </script>
-<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <style>
 .MathJax_Display {
