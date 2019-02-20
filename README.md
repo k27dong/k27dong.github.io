@@ -2,6 +2,9 @@
 it's a blog
 
 ## Feb. 20 Update:
+- now support MathJax languages 
+
+## Feb. 19 Update:
 - added 'Donate' button
 - added a marking at the end of each post
 
