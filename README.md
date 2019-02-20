@@ -3,6 +3,7 @@ it's a blog
 
 ## Feb. 20 Update:
 - added 'Donate' button
+- added a marking at the end of each post
 
 ## Feb. 14 Update:
 - Reduced the amount of blank between each post in the front page, now posts are more compact with each other

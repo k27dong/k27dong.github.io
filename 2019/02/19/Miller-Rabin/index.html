@@ -106,20 +106,26 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kefan">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Miller-Rabin 素性测试">
+<meta property="og:url" content="http://yoursite.com/2019/02/19/Miller-Rabin/index.html">
 <meta property="og:site_name" content="Kefan">
+<meta property="og:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/riemman_zeta.jpg">
+<meta property="og:updated_time" content="2019-02-20T17:09:32.212Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kefan">
+<meta name="twitter:title" content="Miller-Rabin 素性测试">
+<meta name="twitter:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简">
+<meta name="twitter:image" content="http://yoursite.com/images/riemman_zeta.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/19/Miller-Rabin/">
 
 
 
@@ -129,7 +135,7 @@
   };
 </script>
 
-  <title>Kefan</title>
+  <title>Miller-Rabin 素性测试 | Kefan</title>
   
 
 
@@ -177,8 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <a href="https://www.github.com/k27dong" class="github-corner" aria-label="View source on Github"><svg width="90" height="90" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -219,7 +224,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -315,9 +320,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -349,10 +354,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/19/Miller-Rabin/" class="post-title-link" itemprop="url">Miller-Rabin 素性测试</a>
+          <h1 class="post-title" itemprop="name headline">Miller-Rabin 素性测试
+
               
             
           </h1>
@@ -454,444 +457,15 @@
           
 
           
-
-          
-          <!--
-          Reading time
-          2 mins.
-          -->
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    <!-- 结束标记 -->
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/14/Book/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kefan Dong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/My_Avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kefan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/14/Book/" class="post-title-link" itemprop="url">Booklist 2019 (书单)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
- 
-          <span class="post-time" style="display:inline;">
-            <!-- time stamp -->
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-          
-
-              
-                
-              
-
-              <time title="Created: 2019-02-14 14:01:09" itemprop="dateCreated datePublished" datetime="2019-02-14T14:01:09-05:00">2019-02-14</time>
-            
-
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
             <!--
-            Edited timesteamp
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-20 08:33:41" itemprop="dateModified" datetime="2019-02-20T08:33:41-05:00">2019-02-20</time>
-              
-            
+             Views:  
             -->
-          </span>
-          
-
-          <!--
-          category information
-          
-          -->
-
-          
-            <div class="post-symbolscount" style="display:inline;">
-              
-              <span class="post-meta-divider">|</span>
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-
-                <span title="Symbols count in article">
-                <!-- word count -->
-                137
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <!--  approximation symbol
-                  <span class="post-meta-item-text"> &asymp;</span> 
-                  -->
-                
-                <span title="Reading time">
-                <!-- reading time approximation -->
-                1 mins
-              </span>
-              
-            </div>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-          <!--
-          Reading time
-          1 mins.
-          -->
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    <!-- 结束标记 -->
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/Display-the-Age-of-This-Blog/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kefan Dong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/My_Avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kefan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/13/Display-the-Age-of-This-Blog/" class="post-title-link" itemprop="url">Display the Age of This Blog</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
- 
-          <span class="post-time" style="display:inline;">
-            <!-- time stamp -->
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-          
-
-              
-                
-              
-
-              <time title="Created: 2019-02-13 15:54:02" itemprop="dateCreated datePublished" datetime="2019-02-13T15:54:02-05:00">2019-02-13</time>
-            
-
-            <!--
-            Edited timesteamp
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-19 23:55:53" itemprop="dateModified" datetime="2019-02-19T23:55:53-05:00">2019-02-19</time>
-              
-            
-            -->
-          </span>
-          
-
-          <!--
-          category information
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a></span>
-
-                
-                
-              
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
           
-          -->
-
-          
-            <div class="post-symbolscount" style="display:inline;">
-              
-              <span class="post-meta-divider">|</span>
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-
-                <span title="Symbols count in article">
-                <!-- word count -->
-                320
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <!--  approximation symbol
-                  <span class="post-meta-item-text"> &asymp;</span> 
-                  -->
-                
-                <span title="Reading time">
-                <!-- reading time approximation -->
-                1 mins
-              </span>
-              
-            </div>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
 
           
           <!--
@@ -914,18 +488,27 @@
       
 
       
-        
-          
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
-          
-          <!--/noindex-->
-        
+        <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<p><em>待续</em></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n = 2^n -1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如\(M_{11} = 2047 = 23 \times 89 \)就不是素数。想要一次彻底解决这个问题，突破口在于黎曼\(\zeta\)函数。</p>
+<p><img src="/images/riemman_zeta.jpg" alt="Zeta" title="Riemann Zeta Function" width="40%" height="40%"></p>
+<p>按黎曼猜想所言，如果我们知道了黎曼\(\zeta\)函数的所有非平凡零点的精确位置，那么就有了计算素数计数函数的精确公式。即使无法预测精确位置，只是知道一些大致方向，或许也可以从此推断出素数分布的一些特性。然而自猜想提出已经过了160年，数学家依然在这个问题上束手无策。最近不断有传闻说某个教授又证明了黎曼猜想，但至今也没有一个明确的消息。</p>
+<p>关于\(\zeta\)函数部分要展开过于漫长，我们先从一个更简单的问题开始讨论：给一个大整数N，如何判断其是否为素数？</p>
+<p>在过去，这种问题远非人力可及，但如今的计算机提供了出路，简单到初学者也能写出来：写一个for loop，循环所有从2开始到floor(sqrt(N))的整数，如果任何一次循环的商也是整数，则N为合数，否则为质数，是为试除法。然而这种方法对小一点的数还有效，但是对于一个几百位的大数，就算电脑也很吃力。比如当N为<br><code>988744896957139511520127222779223595523279520709504309813645616473313737734468205080925749588688951322700157850487148987</code><br>时，两个质因数分别为：<br><code>751012796879096162041722690156315409567882051387805294268467</code><br>和<br><code>1316548667434112042529905157815899324199482096579536195817561</code><br>两个质因子都有60多位。一般的计算机对此已经无能为力，然而一般RSA1024的公钥都是上百位，后面还有更强大的RSA2048。可以说，在可视的很长一段时间内，RSA是无解的。</p>
+<p>虽然这种方法行不通，数学家的想象力却是很丰富的，Miller-Robin测试就是一个可以快速判定大数素性的方法。但在正式开始之前，首先要写明几条引理。</p>
+<h2 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h2><h3 id="二次探测定理"><a href="#二次探测定理" class="headerlink" title="二次探测定理"></a>二次探测定理</h3><p>\(p\,\)为素数，有<br>$$<br>x^2 \equiv 1 \;(mod \,p) \\<br>(x+1)(x-1) \equiv 0 \;(mod \,p) \\<br>x \equiv \pm 1 \; (mod\, p)<br>$$</p>
+<h3 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h3><p>\(a\,\)为整数，\(p\,\)为素数，有<br>$$<br>a^p \equiv a\;(mod\,p)  \\<br>a^{p-1} \equiv 1\;(mod\,p)<br>$$</p>
+<p>此处需要注意一点，即费马小定理是判断一个数是否为素数的必要条件，但不是充分条件。有一些“伪素数”也可以达成这个条件。比如<br>$$<br>2^{341-1} \equiv 1\;(mod\,341)  \\<br>341 = 11 \times 31<br>$$</p>
+<h3 id="Fermat素性测试"><a href="#Fermat素性测试" class="headerlink" title="Fermat素性测试"></a>Fermat素性测试</h3><p>因为有上述情况的出现，人们引进了“伪素数”这个概念“。称满足\(a^{n-1} \equiv 1\;(mod\,n) \) 的和数\(n\)为“一个以\(a\)底的伪素数”。<br>出于同样的原因，可以看出费马小定理在有些时候并不完全适用。但我们却可以通过多次测试来提高准确度。比如上图中，341通过了\(a=2\,\)的测试，但如果\(a=3\,\)我们就可以看出它是一个合数。在前十亿个自然数中，只有1272个伪素数可以同时通过\(a\,\)为2和3的测试。这个几率是\( 0.001 \unicode{x2030}\)，已经非常小了。可以看出，用来测试的\(a\)越多，算法就会越准确。通常来说的做法是，随机选择数个\(a\)进行若干测试，如果每次都通过了测试，可判定这个数为素数。<br>然而，漏网之鱼还是存在的。在某些情况下，即使选择了所有小于\(n\)，并与其互素的底数\(a\)，这个数依旧可以通过所有的测试。<a href="https://en.wikipedia.org/wiki/Robert_Daniel_Carmichael" target="_blank" rel="noopener">Robert Carmichael</a>是第一个发现这种数的人，于是这种极端的伪素数也就被称为Carmichael数。违反直觉的是，这种数字并不是特别稀有，在上述的1200多个数里，有600多个都是Carmichael数。最小的一个仅为561。这种缺陷的存在，说明这种判断的严谨性尚有不足，需要一个更加完善的算法。</p>
+<h2 id="Miller-Rabin-素性测试"><a href="#Miller-Rabin-素性测试" class="headerlink" title="Miller-Rabin 素性测试"></a>Miller-Rabin 素性测试</h2><h3 id="阐述"><a href="#阐述" class="headerlink" title="阐述"></a>阐述</h3><h3 id="C-中的实现"><a href="#C-中的实现" class="headerlink" title="C++中的实现"></a>C++中的实现</h3><h3 id="大素数的生成"><a href="#大素数的生成" class="headerlink" title="大素数的生成"></a>大素数的生成</h3><h3 id="随机数的问题"><a href="#随机数的问题" class="headerlink" title="随机数的问题"></a>随机数的问题</h3><p></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
       
     </div>
+
+    
+      
+
 
     
 
@@ -937,10 +520,49 @@
 
     <!-- 结束标记 -->
     
+   <div>
+      <div> 
+     
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+    ---- END ----
+    </div> 
+     
+</div>
+
+<!--
+-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------
+-->
+   </div>
+    
 
     
       
     
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto;margin-bottom: 0px; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById(&quot;QR&quot;); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpeg" alt="Kefan Dong WeChat Pay">
+        <!-- <p>WeChat Pay</p> -->
+        <!-- <h6></h6> -->
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -949,240 +571,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/关于博客/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kefan Dong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/My_Avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kefan">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/02/11/关于博客/" class="post-title-link" itemprop="url">关于博客</a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
- 
-          <span class="post-time" style="display:inline;">
-            <!-- time stamp -->
+              <a href="/2019/02/14/Book/" rel="next" title="Booklist 2019 (书单)">
+                <i class="fa fa-chevron-left"></i> Booklist 2019 (书单)
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-          
-
-              
-                
-              
-
-              <time title="Created: 2019-02-11 12:50:29" itemprop="dateCreated datePublished" datetime="2019-02-11T12:50:29-05:00">2019-02-11</time>
-            
-
-            <!--
-            Edited timesteamp
-            
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-02-12 21:17:31" itemprop="dateModified" datetime="2019-02-12T21:17:31-05:00">2019-02-12</time>
-              
-            
-            -->
-          </span>
-          
-
-          <!--
-          category information
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/other/" itemprop="url" rel="index"><span itemprop="name">other</span></a></span>
-
-                
-                
-              
-            </span>
-          
-          -->
-
-          
-            <div class="post-symbolscount" style="display:inline;">
-              
-              <span class="post-meta-divider">|</span>
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-
-                <span title="Symbols count in article">
-                <!-- word count -->
-                2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <!--  approximation symbol
-                  <span class="post-meta-item-text"> &asymp;</span> 
-                  -->
-                
-                <span title="Reading time">
-                <!-- reading time approximation -->
-                4 mins
-              </span>
-              
-            </div>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-          <!--
-          Reading time
-          2 mins.
-          -->
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>
-              
-              
-            </p>
-          <!--noindex-->
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    <!-- 结束标记 -->
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1192,14 +602,19 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
         </div>
         
           
@@ -1221,8 +636,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1325,6 +749,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理"><span class="nav-number">2.</span> <span class="nav-text">引理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二次探测定理"><span class="nav-number">2.1.</span> <span class="nav-text">二次探测定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#费马小定理"><span class="nav-number">2.2.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fermat素性测试"><span class="nav-number">2.3.</span> <span class="nav-text">Fermat素性测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Miller-Rabin-素性测试"><span class="nav-number">3.</span> <span class="nav-text">Miller-Rabin 素性测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阐述"><span class="nav-number">3.1.</span> <span class="nav-text">阐述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-中的实现"><span class="nav-number">3.2.</span> <span class="nav-text">C++中的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大素数的生成"><span class="nav-number">3.3.</span> <span class="nav-text">大素数的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机数的问题"><span class="nav-number">3.4.</span> <span class="nav-text">随机数的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1525,6 +966,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
 
   
 
@@ -1535,6 +980,34 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '35d919742797a567b94c',
+    clientSecret: '7c63a2694c62bc60182450ebc20e83f92e5014c6',
+    repo: 'k27dong.github.io',
+    owner: 'k27dong',
+    admin: ['k27dong'],
+    id: md5(location.pathname),
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
