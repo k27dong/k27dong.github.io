@@ -1,6 +1,9 @@
 # k27dong.github.io
 it's a blog
 
+## Feb. 22 Update:
+- changed the default font for Simplified Chinese to <a href="https://source.typekit.com/source-han-serif/cn/">Source Han Serif</a>
+
 ## Feb. 20 Update:
 - now support MathJax language
 
