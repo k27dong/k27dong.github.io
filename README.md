@@ -2,6 +2,7 @@
 it's a blog
 
 ## Feb. 22 Update:
+- added RSS Feed
 - changed the default font for Simplified Chinese to <a href="https://source.typekit.com/source-han-serif/cn/">Source Han Serif</a> (思源宋體)
 - verified by Google & Baidu
 
