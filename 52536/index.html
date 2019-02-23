@@ -138,15 +138,15 @@
 
   <meta name="description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Miller-Rabin素性测试">
+<meta property="og:title" content="Miller-Rabin素性测试和大素数生成">
 <meta property="og:url" content="https://ke-fan.me/52536/index.html">
 <meta property="og:site_name" content="Kefan">
 <meta property="og:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://ke-fan.me/images/riemman_zeta.jpg">
-<meta property="og:updated_time" content="2019-02-22T18:06:49.833Z">
+<meta property="og:updated_time" content="2019-02-23T02:43:52.280Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Miller-Rabin素性测试">
+<meta name="twitter:title" content="Miller-Rabin素性测试和大素数生成">
 <meta name="twitter:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
 <meta name="twitter:image" content="https://ke-fan.me/images/riemman_zeta.jpg">
 
@@ -167,7 +167,7 @@
   };
 </script>
 
-  <title>Miller-Rabin素性测试 | Kefan</title>
+  <title>Miller-Rabin素性测试和大素数生成 | Kefan</title>
   
 
 
@@ -394,7 +394,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Miller-Rabin素性测试
+          <h1 class="post-title" itemprop="name headline">Miller-Rabin素性测试和大素数生成
 
               
             
@@ -439,7 +439,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-22 13:06:49" itemprop="dateModified" datetime="2019-02-22T13:06:49-05:00">2019-02-22</time>
+                <time title="Modified: 2019-02-22 21:43:52" itemprop="dateModified" datetime="2019-02-22T21:43:52-05:00">2019-02-22</time>
               
             
             -->
@@ -463,7 +463,7 @@
 
                 <span title="Symbols count in article">
                 <!-- word count -->
-                2.3k
+                3.1k
                 </span>
               
 
@@ -482,7 +482,7 @@
                 
                 <span title="Reading time">
                 <!-- reading time approximation -->
-                5 mins
+                7 mins
               </span>
               
             </div>
@@ -510,7 +510,7 @@
           
           <!--
           Reading time
-          4 mins.
+          6 mins.
           -->
 
           
@@ -547,7 +547,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
 2^{341-1} \equiv 1\;(mod\,341)  \\\\
 341 = 11 \times 31</script><h3 id="Fermat素性测试"><a href="#Fermat素性测试" class="headerlink" title="Fermat素性测试"></a>Fermat素性测试</h3><p>因为有上述情况的出现，人们引进了“伪素数”这个概念“。称满足\(\,a^{n-1} \equiv 1\;(mod\,n) \) 的和数\(n\)为“一个以\(\,a\,\)为底的伪素数”。<br>出于同样的原因，可以看出费马小定理在有些时候并不完全适用。但我们却可以通过多次测试来提高准确度。比如上图中，341通过了\(a=2\,\)的测试，但如果再次测试\(a=3\,\)，我们就可以看出它是一个合数。在前十亿个自然数中，只有1272个伪素数可以同时通过\(a\,\)为2和3的测试。这个几率是\( 0.001 \unicode{x2030}\)，已经非常小了。可以看出，用来测试的\(a\)越多，算法就会越准确。通常来说的做法是，随机选择数个\(\,a\,\)进行若干测试，如果每次都通过了测试，可判定这个数为素数。</p>
 <p>然而漏网之鱼还是存在的。在某些情况下，即使选择了所有小于\(n\)并与其互素的底数\(a\)，这个数依旧可以通过所有的测试。<a href="https://en.wikipedia.org/wiki/Robert_Daniel_Carmichael" target="_blank" rel="noopener">Robert Carmichael</a>是第一个发现这种数的人，于是这种极端的伪素数也就被称为Carmichael数。违反直觉的是，这种数字并不是特别稀有，在上述的1200多个数里，有600多个都是Carmichael数。最小的一个仅为561。这种缺陷的存在，说明这种判断的严谨性尚有不足，需要一个更加完善的算法。<br><br></p>
-<h2 id="Miller-Rabin-素性测试"><a href="#Miller-Rabin-素性测试" class="headerlink" title="Miller-Rabin 素性测试"></a>Miller-Rabin 素性测试</h2><p>苏联数学家M. M. Artjuhov在1966年首次提出了这个想法，然而不知道因为什么原因，并没有掀起什么波浪（wiki上也只有短短一句话说明）。直到十年后的1976年，Gary Miller才在他的PHD论文“Riemann’s Hypothesis and Tests for Primality”中独立地重新发现了这个理论。这个算法的正确性基于广义黎曼猜想，而这个猜想至今并未被证明（虽然极可能是正确的）。后来经过Michael Rabin（拉宾）的改造，变成了一个依赖于二次探测定理的非确定性算法。</p>
+<h2 id="Miller-Rabin-素性测试"><a href="#Miller-Rabin-素性测试" class="headerlink" title="Miller-Rabin 素性测试"></a>Miller-Rabin 素性测试</h2><p>苏联数学家M. M. Artjuhov在1966年首次提出了这个想法，然而不知道因为什么原因，并没有掀起什么波浪（wiki上也只有短短一句话说明）。直到十年后的1976年，Gary Miller才在他的PHD论文<a href="#bib2" id="bib2ref"><sup>[1]</sup></a>中独立地重新发现了这个理论。这个算法的正确性基于广义黎曼猜想，而这个猜想至今并未被证明（虽然极可能是正确的）。后来经过Michael Rabin（拉宾）的改造<a href="#bib3" id="bib3ref"><sup>[2]</sup></a>，变成了一个依赖于二次探测定理的非确定性算法。</p>
 <h3 id="阐述"><a href="#阐述" class="headerlink" title="阐述"></a>阐述</h3><p>判断\(\,N\,\)是否是为素数：</p>
 <ul>
 <li>确定\(\,N\,\)是一个大于2的奇数</li>
@@ -571,8 +571,12 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
 <li>对\(\,p\,\)进行数次Miller-Rabin测试 （5次测试的误差率已小于千分之一）</li>
 <li>如果都通过，则可以认为\(\,p\,\)是素数</li>
 </ul>
-<h3 id="随机数的问题"><a href="#随机数的问题" class="headerlink" title="随机数的问题"></a>随机数的问题</h3><p>几乎上面所有的计算都涉及到了随机数，然而对于电脑来说，由于他的状态空间是恒定的，纯软件角度上的随机是不可能的。所有的软件归根结底都只是电路上的1和0，它没有“随便”的概念，只有非黑即白的“是”和“否”。因此随机产生的数，都不是真正意义上的随机数，而是通过某些算法算出来的“伪随机数”。但对于制造计算机的工程师来说，只要计算机生成的伪随机数可以解决实际问题，那就没必要陷入有关自由意志之类的无穷讨论中去。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+<h3 id="随机数的问题"><a href="#随机数的问题" class="headerlink" title="随机数的问题"></a>随机数的问题</h3><p>几乎上面所有的计算都涉及到了随机数，然而对于电脑来说，由于他的状态空间是恒定的，纯软件角度上的随机是不可能的。所有的软件归根结底都只是电路上的1和0，它没有“随便”的概念，只有非黑即白的“是”和“否”。因此随机产生的数，都不是真正意义上的随机数，而是通过某些算法算出来的“伪随机数”（比如无理数）。而真正意义上的随机，与其说是数学问题，不如说更像是哲学问题。对于电脑本身来说，最“随机”的随机数是通过处理器上的一块特殊的硬件产生的，这片芯片会用电路中硅元素所产生的热力学噪声来产生随机数。如果有更苛刻一些的要求，或许只有量子力学才能给出答案了。但对于制造计算机的工程师来说，只要生成的伪随机数可以解决实际问题，就没有必要陷入有关自由意志之类的无穷讨论中去。</p>
+<p>可RSA公司就是在这个伪随机数上面栽了跟头。这里提到的RSA公司，并不是RSA算法本身，而是一个基于此算法而成立的加密公司。2007年，微软的两名工程师发现，RSA公司所用的加密算法<a href="https://en.wikipedia.org/wiki/Dual_EC_DRBG" target="_blank" rel="noopener">Dual_EC_DRBG</a>里面包含了一个来源未知的常数Q<a href="#bib4" id="bib4ref"><sup>[3]</sup></a>，没有人知道这个数字是如何生成的，公司制定的标准中也没有提及选择这个数的原因。而在这篇文章中，他们提到如果这个常数是经过特殊设计的话，只要知道了随机数列生成的前32个字节，便可以预知未来所有相同条件下产生的随机数。可因为并不知道设计者对此是否知情，也不知道常数Q的具体运作方式，他们无法肯定这是不是设计者故意留下来的漏洞，只是说是逻辑上存在的一个可能的缺陷，即使这个算法已经被NIST（美国国家标准技术管理委员会）立为了国家标准。</p>
+<p>后来到了2013年的9月，斯诺登躲在香港酒店里泄露了大量的国家备忘录。人们才发现NSA（美国国家安全局）早就通过贿赂收买了RSA公司，并且故意把Dual_EC_DRBG这个运行速度缓慢，自带缺陷的算法写入了标准。再后来，RSA公司推出的安全软件BSafe也沿用了这个算法（虽然他们本身不一定知道算法本身有缺陷）。然而这个问题和斯诺登爆出的其他猛料相比实在不算太大的新闻，棱镜计划的丑闻程度比这个严重多了。关于Dual_EC_DRBG更具体的细节，在Aris Adamantiadis的<a href="https://blog.0xbadc0de.be/archives/155" target="_blank" rel="noopener">这篇博文</a>里有更详细的介绍。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>RSA所基于的大素数生成有两个很关键的条件：素数测试和随机数。前者保证整个算法的正确行和效率，后者保证数字是不可预测，难以攻破的。然而随着AKS素性测试的出现，Miller-Rabin测试已经渐渐淡出主流。AKS这个名字来自它的三个发现者名字的首字母：Agrawal–Kayal–Saxena，和RSA(Rivest–Shamir–Adleman)如出一辙，进一步了解请移步他们的论文<a href="#bib4" id="bib4ref"><sup>[4]</sup></a>。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a id="bib2" href="#bib2ref"><sup>[1]</sup></a>: Miller, Gary L. (1976), “Riemann’s Hypothesis and Tests for Primality”, Journal of Computer and System Sciences, 13 (3): 300–317, doi:10.1145/800116.803773<br><a id="bib3" href="#bib3ref"><sup>[2]</sup></a>: Rabin, Michael O. (1980), “Probabilistic algorithm for testing primality”, Journal of Number Theory, 12 (1): 128–138, doi:10.1016/0022-314X(80)90084-0<br><a id="bib4" href="#bib4ref"><sup>[3]</sup></a> Dan Shumow, Niels Ferguson. (2007), “On the Possibility of a Back Door in the NIST SP800-90 Dual Ec Prng”. <a href="http://rump2007.cr.yp.to/15-shumow.pdf" target="_blank" rel="noopener">http://rump2007.cr.yp.to/15-shumow.pdf</a><br><a id="bib5" href="#bib5ref"><sup>[4]</sup></a> Agrawal, Manindra; Kayal, Neeraj; Saxena, Nitin (2004). “PRIMES is in P”. Annals of Mathematics. 160 (2): 781–793. doi:10.4007/annals.2004.160.781. JSTOR 3597229</p>
+
       
     </div>
 
@@ -837,7 +841,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理"><span class="nav-number">2.</span> <span class="nav-text">引理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二次探测定理"><span class="nav-number">2.1.</span> <span class="nav-text">二次探测定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#费马小定理"><span class="nav-number">2.2.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fermat素性测试"><span class="nav-number">2.3.</span> <span class="nav-text">Fermat素性测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Miller-Rabin-素性测试"><span class="nav-number">3.</span> <span class="nav-text">Miller-Rabin 素性测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阐述"><span class="nav-number">3.1.</span> <span class="nav-text">阐述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-中的实现"><span class="nav-number">3.2.</span> <span class="nav-text">C++中的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大素数的生成"><span class="nav-number">3.3.</span> <span class="nav-text">大素数的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机数的问题"><span class="nav-number">3.4.</span> <span class="nav-text">随机数的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理"><span class="nav-number">2.</span> <span class="nav-text">引理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二次探测定理"><span class="nav-number">2.1.</span> <span class="nav-text">二次探测定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#费马小定理"><span class="nav-number">2.2.</span> <span class="nav-text">费马小定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fermat素性测试"><span class="nav-number">2.3.</span> <span class="nav-text">Fermat素性测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Miller-Rabin-素性测试"><span class="nav-number">3.</span> <span class="nav-text">Miller-Rabin 素性测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阐述"><span class="nav-number">3.1.</span> <span class="nav-text">阐述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-中的实现"><span class="nav-number">3.2.</span> <span class="nav-text">C++中的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大素数的生成"><span class="nav-number">3.3.</span> <span class="nav-text">大素数的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机数的问题"><span class="nav-number">3.4.</span> <span class="nav-text">随机数的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -875,7 +879,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
       <span class="post-meta-item-text">Word count total: </span>
     
     <span title="Word count total">
-    4.7k
+    5.6k
   </span>
   
 
