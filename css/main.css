@@ -610,7 +610,7 @@ pre,
 }
 pre,
 code {
-  font-family: consolas, Menlo, "source-han-serif-sc", "serif", "Microsoft YaHei", monospace;
+  font-family: consolas, Menlo, monospace;
 }
 code {
   overflow-wrap: break-word;
@@ -2065,7 +2065,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0332ec;
+  background: #ffff53;
 }
 .links-of-blogroll {
   font-size: 13px;
