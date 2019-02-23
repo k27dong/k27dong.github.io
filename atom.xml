@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ke-fan.me/"/>
-  <updated>2019-02-23T02:43:52.280Z</updated>
+  <updated>2019-02-23T02:48:55.263Z</updated>
   <id>https://ke-fan.me/</id>
   
   <author>
@@ -21,14 +21,13 @@
     <link href="https://ke-fan.me/52536/"/>
     <id>https://ke-fan.me/52536/</id>
     <published>2019-02-19T23:55:44.000Z</published>
-    <updated>2019-02-23T02:43:52.280Z</updated>
+    <updated>2019-02-23T02:48:55.263Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;em&gt;待续&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布
       
     
     </summary>

@@ -136,18 +136,19 @@
 
 
 
-  <meta name="description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
+  <meta name="description" content="写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Miller-Rabin素性测试和大素数生成">
 <meta property="og:url" content="https://ke-fan.me/52536/index.html">
 <meta property="og:site_name" content="Kefan">
-<meta property="og:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
+<meta property="og:description" content="写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://ke-fan.me/images/riemman_zeta.jpg">
-<meta property="og:updated_time" content="2019-02-23T02:43:52.280Z">
+<meta property="og:image" content="https://ke-fan.me/images/dual_e.png">
+<meta property="og:updated_time" content="2019-02-23T02:48:55.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Miller-Rabin素性测试和大素数生成">
-<meta name="twitter:description" content="待续 写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已">
+<meta name="twitter:description" content="写在前面RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如">
 <meta name="twitter:image" content="https://ke-fan.me/images/riemman_zeta.jpg">
 
 
@@ -439,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-22 21:43:52" itemprop="dateModified" datetime="2019-02-22T21:43:52-05:00">2019-02-22</time>
+                <time title="Modified: 2019-02-22 21:48:55" itemprop="dateModified" datetime="2019-02-22T21:48:55-05:00">2019-02-22</time>
               
             
             -->
@@ -528,8 +529,7 @@
       
 
       
-        <p><em>待续</em></p>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如\(M_{11} = 2047 = 23 \times 89 \)就不是素数。想要一次彻底解决这个问题，突破口在于黎曼\(\zeta\)函数。</p>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>RSA算法完全基于一个非常简明的数论事实：将两个大素数相乘十分容易，然而将他们的乘积分解却十分困难，其背后的原因在于素数分布的不可确定性。现在，唯一靠谱的寻找素数的方法也只是用超级计算机计算梅森素数：\(M_n=2^n-1\)。比如\(M_3 = 7\)， \(M_5 = 31\)都是素数，但是这种方法并不能保证算出来的数一定是素数，只是比纯一个一个试准确了一点，计算起来简单一点而已。比如\(M_{11} = 2047 = 23 \times 89 \)就不是素数。想要一次彻底解决这个问题，突破口在于黎曼\(\zeta\)函数。</p>
 <p><img src="/images/riemman_zeta.jpg" alt="Zeta" title="Riemann Zeta Function" width="40%" height="40%"></p>
 <p>按黎曼猜想所言，如果我们知道了黎曼\(\zeta\)函数的所有非平凡零点的精确位置，那么就有了计算素数计数函数的精确公式。即使无法预测精确位置，只是知道一些大致方向，或许也可以从此推断出素数分布的一些特性。然而自猜想提出已经过了160年，数学家依然在这个问题上束手无策。最近不断有传闻说某个教授又证明了黎曼猜想，但至今也没有一个明确的消息。</p>
 <p>关于\(\zeta\)函数部分要展开过于漫长，我们先从一个更简单的问题开始讨论：给一个大整数N，如何判断其是否为素数？</p>
@@ -573,6 +573,7 @@ a^{p-1} \equiv 1\;(mod\,p)</script><p>此处需要注意一点，即费马小定
 </ul>
 <h3 id="随机数的问题"><a href="#随机数的问题" class="headerlink" title="随机数的问题"></a>随机数的问题</h3><p>几乎上面所有的计算都涉及到了随机数，然而对于电脑来说，由于他的状态空间是恒定的，纯软件角度上的随机是不可能的。所有的软件归根结底都只是电路上的1和0，它没有“随便”的概念，只有非黑即白的“是”和“否”。因此随机产生的数，都不是真正意义上的随机数，而是通过某些算法算出来的“伪随机数”（比如无理数）。而真正意义上的随机，与其说是数学问题，不如说更像是哲学问题。对于电脑本身来说，最“随机”的随机数是通过处理器上的一块特殊的硬件产生的，这片芯片会用电路中硅元素所产生的热力学噪声来产生随机数。如果有更苛刻一些的要求，或许只有量子力学才能给出答案了。但对于制造计算机的工程师来说，只要生成的伪随机数可以解决实际问题，就没有必要陷入有关自由意志之类的无穷讨论中去。</p>
 <p>可RSA公司就是在这个伪随机数上面栽了跟头。这里提到的RSA公司，并不是RSA算法本身，而是一个基于此算法而成立的加密公司。2007年，微软的两名工程师发现，RSA公司所用的加密算法<a href="https://en.wikipedia.org/wiki/Dual_EC_DRBG" target="_blank" rel="noopener">Dual_EC_DRBG</a>里面包含了一个来源未知的常数Q<a href="#bib4" id="bib4ref"><sup>[3]</sup></a>，没有人知道这个数字是如何生成的，公司制定的标准中也没有提及选择这个数的原因。而在这篇文章中，他们提到如果这个常数是经过特殊设计的话，只要知道了随机数列生成的前32个字节，便可以预知未来所有相同条件下产生的随机数。可因为并不知道设计者对此是否知情，也不知道常数Q的具体运作方式，他们无法肯定这是不是设计者故意留下来的漏洞，只是说是逻辑上存在的一个可能的缺陷，即使这个算法已经被NIST（美国国家标准技术管理委员会）立为了国家标准。</p>
+<p><img src="/images/dual_e.png" alt="dual_e" title="Dual Elliptic Curve" width="25%" height="25%/"></p>
 <p>后来到了2013年的9月，斯诺登躲在香港酒店里泄露了大量的国家备忘录。人们才发现NSA（美国国家安全局）早就通过贿赂收买了RSA公司，并且故意把Dual_EC_DRBG这个运行速度缓慢，自带缺陷的算法写入了标准。再后来，RSA公司推出的安全软件BSafe也沿用了这个算法（虽然他们本身不一定知道算法本身有缺陷）。然而这个问题和斯诺登爆出的其他猛料相比实在不算太大的新闻，棱镜计划的丑闻程度比这个严重多了。关于Dual_EC_DRBG更具体的细节，在Aris Adamantiadis的<a href="https://blog.0xbadc0de.be/archives/155" target="_blank" rel="noopener">这篇博文</a>里有更详细的介绍。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>RSA所基于的大素数生成有两个很关键的条件：素数测试和随机数。前者保证整个算法的正确行和效率，后者保证数字是不可预测，难以攻破的。然而随着AKS素性测试的出现，Miller-Rabin测试已经渐渐淡出主流。AKS这个名字来自它的三个发现者名字的首字母：Agrawal–Kayal–Saxena，和RSA(Rivest–Shamir–Adleman)如出一辙，进一步了解请移步他们的论文<a href="#bib4" id="bib4ref"><sup>[4]</sup></a>。</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a id="bib2" href="#bib2ref"><sup>[1]</sup></a>: Miller, Gary L. (1976), “Riemann’s Hypothesis and Tests for Primality”, Journal of Computer and System Sciences, 13 (3): 300–317, doi:10.1145/800116.803773<br><a id="bib3" href="#bib3ref"><sup>[2]</sup></a>: Rabin, Michael O. (1980), “Probabilistic algorithm for testing primality”, Journal of Number Theory, 12 (1): 128–138, doi:10.1016/0022-314X(80)90084-0<br><a id="bib4" href="#bib4ref"><sup>[3]</sup></a> Dan Shumow, Niels Ferguson. (2007), “On the Possibility of a Back Door in the NIST SP800-90 Dual Ec Prng”. <a href="http://rump2007.cr.yp.to/15-shumow.pdf" target="_blank" rel="noopener">http://rump2007.cr.yp.to/15-shumow.pdf</a><br><a id="bib5" href="#bib5ref"><sup>[4]</sup></a> Agrawal, Manindra; Kayal, Neeraj; Saxena, Nitin (2004). “PRIMES is in P”. Annals of Mathematics. 160 (2): 781–793. doi:10.4007/annals.2004.160.781. JSTOR 3597229</p>
