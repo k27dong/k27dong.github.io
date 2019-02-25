@@ -1,5 +1,5 @@
 # k27dong.github.io
-it's a blog
+it's a <a href="https://ke-fan.me">blog</a>
 
 ## Feb. 22 Update:
 - added RSS Feed
@@ -49,5 +49,9 @@ it's a blog
 - added a media player
 - tags & categories no long links to an empty page
 
-## Acknowledgments
+## Acknowledgment
 - coffee
+
+## Credits
+- <a href="https://hexo.io">hexo</a>
+- <a href="https://theme-next.org">next</a>
