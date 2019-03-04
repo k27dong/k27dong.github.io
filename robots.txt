@@ -3,6 +3,7 @@ Allow: /
 Allow: /archives/
 Allow: /tags/
 Allow: /categories/
+Allow: /music/
 
 Disallow: /vendors/
 Disallow: /js/
@@ -11,5 +12,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://yoursite.com/sitemap.xml
-Sitemap: http://yoursite.com/baidusitemap.xml
+Sitemap: http://ke-fan.me/sitemap.xml
+Sitemap: http://ke-fan.me/baidusitemap.xml
