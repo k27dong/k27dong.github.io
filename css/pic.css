@@ -29,4 +29,8 @@ figure:hover img {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+}
+
+p:lang(zh) {
+    font-family: "source-han-serif-sc", serif;
+}
