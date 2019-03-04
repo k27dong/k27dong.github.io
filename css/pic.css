@@ -21,7 +21,7 @@ figure img {
 figure:hover img {
     -webkit-filter: grayscale(0);
     filter: grayscale(0);
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 
 .mid {
