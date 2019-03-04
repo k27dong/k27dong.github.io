@@ -6,11 +6,11 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ke-fan.me/"/>
-  <updated>2019-02-23T17:24:44.667Z</updated>
+  <updated>2019-03-04T19:14:01.261Z</updated>
   <id>https://ke-fan.me/</id>
   
   <author>
-    <name>Kefan Dong</name>
+    <name>Kefan Dong,董珂璠</name>
     
   </author>
   
@@ -21,7 +21,7 @@
     <link href="https://ke-fan.me/posts/52536/"/>
     <id>https://ke-fan.me/posts/52536/</id>
     <published>2019-02-19T23:55:44.000Z</published>
-    <updated>2019-02-23T17:24:44.667Z</updated>
+    <updated>2019-03-04T19:14:01.261Z</updated>
     
     <summary type="html">
     
@@ -34,6 +34,10 @@
     
       <category term="math" scheme="https://ke-fan.me/categories/math/"/>
     
+    
+      <category term="Miller-Rabin" scheme="https://ke-fan.me/tags/Miller-Rabin/"/>
+    
+      <category term="Math" scheme="https://ke-fan.me/tags/Math/"/>
     
   </entry>
   
