@@ -1,6 +1,9 @@
 # k27dong.github.io
 it's a <a href="https://ke-fan.me">blog</a>
 
+## May 5 Update
+- changed the sidebar to only display when the icon is clicked
+
 ## Feb. 22 Update:
 - added RSS Feed
 - changed the default font for Simplified Chinese to <a href="https://source.typekit.com/source-han-serif/cn/">Source Han Serif</a> (思源宋體)
@@ -30,12 +33,12 @@ it's a <a href="https://ke-fan.me">blog</a>
 - minor appearance and performance improvements
 
 ## Feb. 12 Update:
-- opened categories page
-- redesigned the comment section, now only appears in certain pages
+- added categories page
+- updated the comment section, now only appears in certain pages
 
 ## Feb. 11 Update:
-- opened the comment section (<a href="https://github.com/gitalk/gitalk">gitalk</a>)
-- opened a chat room using <a href="https://gitter.im">gitter</a>
+- added the comment section (<a href="https://github.com/gitalk/gitalk">gitalk</a>)
+- added a chat room using <a href="https://gitter.im">gitter</a>
 - added the about page
 - added 'fork me on Github'
 - added <a href="https://clustrmaps.com/">clustrmaps</a> in the sidebar
