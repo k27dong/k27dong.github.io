@@ -161,7 +161,6 @@
 
 
   <meta name="description" content="之前也写过一些文章，大部分是写给自己的，因为文笔太差，没脸给别人看。产量也很随意，可能一天写完，也可能一个月不动笔，数量和质量全看心情。 那时候的想法是先在新浪或者CSDN上面练练手，等有了一些能力之后再去想办法自己搭一个。然而时不我待，实习的公司正好在做类似的东西，于是趁着白天上班的间隙，在老板不在的时候，东拼西凑，弄出来这么一个东西。 必须承认，搭建博客的过程无异于土法炼钢。充满了各种自学实验">
-<meta name="keywords" content="博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于博客">
 <meta property="og:url" content="https://ke-fan.me/posts/16167/index.html">
@@ -552,7 +551,7 @@
                 
                 <span title="Reading time">
                 <!-- reading time approximation -->
-                4 mins
+                5 mins
               </span>
               
             </div>
@@ -580,7 +579,7 @@
           
           <!--
           Reading time
-          2 mins.
+          3 mins.
           -->
 
           
@@ -613,7 +612,25 @@
 <p>科技的进步为生活带来无数可能性，人们都在追求“不一样”。今年游轮出海，明年北欧跨年。白天大鱼大肉，晚上天上人间。城市里的人们普遍都有钱一点了，生理需求和安全需求满足了，便开始追逐更高层次的享受。坚持一件事情好像是越来越难了，因为有太多的事情等着我们去做了，而娱乐的成本也小了很多，于是我们就在这时代银行的枪林弹雨中筋疲力尽。每天下班之后瘫倒在床上，我也会想到在地球的另一头，肯定有一对夫妇正端着他们的豆腐和卤准备上街。对他们来说，并不是因为要追求什么虚无缥缈的东西，而只是因为这件事有它存在的必要性，我想这就够了，操心太多其他的事情是没有意思的。</p>
 <p>我想很多人都有过日记本，里面那些半途而废的，不知所终的幻想，那些对未来的憧憬与渴望如今全变成了的生活的麻烦。现在我决定把这些麻烦重新整理起来。</p>
 <p>这本来应该是一个纯技术向的博客，但我还是希望非技术向的文章能多一些。因为技术是人生存所依赖的，却不是人的精神能依凭的；它是生存的方法，而不是生存的法则。科学是一个很小的东西，并不像人们所寄望的那样可以无所不能。这是顾城说的。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -909,7 +926,7 @@
       <span class="post-meta-item-text">Word count total: </span>
     
     <span title="Word count total">
-    12k
+    12.1k
   </span>
   
 

@@ -1,3 +1,44 @@
-<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>body {
-    background-color: aqua
+<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>a.button6 {
+     display:inline-block;
+     padding:0.7em 1.4em;
+     margin:0 0.3em 0.3em 0;
+     border-radius:0.15em;
+     box-sizing: border-box;
+     text-decoration:none;
+     font-family:'Roboto',sans-serif;
+     text-transform:uppercase;
+     font-weight:400;
+     color:#FFFFFF;
+     background-color:#3369ff;
+     box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);
+     text-align:center;
+     position:relative;
 }
+
+a.button6:active{
+    top : 0.1em;
+}
+@media all and (max-width:30em){
+ a.button6{
+  display:block;
+  margin:0.4em auto;
+ }
+}<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>

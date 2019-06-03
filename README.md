@@ -1,6 +1,10 @@
 # k27dong.github.io
 it's a <a href="https://ke-fan.me">blog</a>
 
+## Jun. 3 Update
+- added supports for emojis
+
+
 ## May 5 Update
 - changed the sidebar to only display when the icon is clicked
 
