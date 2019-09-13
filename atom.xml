@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ke-fan.me/"/>
-  <updated>2019-05-29T02:33:17.031Z</updated>
+  <updated>2019-09-13T00:08:48.240Z</updated>
   <id>https://ke-fan.me/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>适合私人沉迷</title>
+    <link href="https://ke-fan.me/posts/15200/"/>
+    <id>https://ke-fan.me/posts/15200/</id>
+    <published>2019-09-11T01:59:00.000Z</published>
+    <updated>2019-09-13T00:08:48.240Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>is_Odd();</title>
