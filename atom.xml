@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ke-fan.me/"/>
-  <updated>2019-09-13T00:08:48.240Z</updated>
+  <updated>2019-09-13T01:04:08.227Z</updated>
   <id>https://ke-fan.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ke-fan.me/posts/15200/"/>
     <id>https://ke-fan.me/posts/15200/</id>
     <published>2019-09-11T01:59:00.000Z</published>
-    <updated>2019-09-13T00:08:48.240Z</updated>
+    <updated>2019-09-13T01:04:08.227Z</updated>
     
     <summary type="html">
     
@@ -32,6 +32,10 @@
     
     </summary>
     
+      <category term="random" scheme="https://ke-fan.me/categories/random/"/>
+    
+    
+      <category term="random" scheme="https://ke-fan.me/tags/random/"/>
     
   </entry>
   
@@ -40,7 +44,7 @@
     <link href="https://ke-fan.me/posts/60052/"/>
     <id>https://ke-fan.me/posts/60052/</id>
     <published>2019-05-29T00:35:15.000Z</published>
-    <updated>2019-05-29T02:33:17.031Z</updated>
+    <updated>2019-09-13T01:02:48.385Z</updated>
     
     <summary type="html">
     
@@ -51,6 +55,12 @@
     
     </summary>
     
+      <category term="algorithm" scheme="https://ke-fan.me/categories/algorithm/"/>
+    
+      <category term="programming" scheme="https://ke-fan.me/categories/algorithm/programming/"/>
+    
+    
+      <category term="algorithm" scheme="https://ke-fan.me/tags/algorithm/"/>
     
   </entry>
   
@@ -145,7 +155,7 @@
     <link href="https://ke-fan.me/posts/43663/"/>
     <id>https://ke-fan.me/posts/43663/</id>
     <published>2019-01-01T05:00:00.000Z</published>
-    <updated>2019-06-07T00:03:54.250Z</updated>
+    <updated>2019-09-13T00:33:46.713Z</updated>
     
     <summary type="html">
     
