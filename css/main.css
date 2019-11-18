@@ -1642,10 +1642,6 @@ pre .javascript .function {
   font-size: 14px;
   margin-top: 2px;
 }
-.posts-expand .post-meta time {
-  border-bottom: 1px dashed #999;
-  cursor: help;
-}
 .post-meta-divider {
   margin: 0 0.5em;
 }
@@ -2065,7 +2061,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #45ffff;
+  background: #7cc9e0;
 }
 .links-of-blogroll {
   font-size: 13px;
