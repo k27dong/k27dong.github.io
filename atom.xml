@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ke-fan.me/"/>
-  <updated>2019-12-22T22:59:39.672Z</updated>
+  <updated>2019-12-22T23:08:26.683Z</updated>
   <id>https://ke-fan.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ke-fan.me/posts/25747/"/>
     <id>https://ke-fan.me/posts/25747/</id>
     <published>2019-12-19T18:06:45.000Z</published>
-    <updated>2019-12-22T22:59:39.672Z</updated>
+    <updated>2019-12-22T23:08:26.683Z</updated>
     
     <summary type="html">
     
@@ -32,6 +32,12 @@
     
     </summary>
     
+      <category term="React" scheme="https://ke-fan.me/categories/React/"/>
+    
+    
+      <category term="Github" scheme="https://ke-fan.me/tags/Github/"/>
+    
+      <category term="GraphQL" scheme="https://ke-fan.me/tags/GraphQL/"/>
     
   </entry>
   
@@ -40,7 +46,7 @@
     <link href="https://ke-fan.me/posts/35774/"/>
     <id>https://ke-fan.me/posts/35774/</id>
     <published>2019-11-18T03:33:29.000Z</published>
-    <updated>2019-11-18T03:51:01.069Z</updated>
+    <updated>2019-12-22T23:05:59.593Z</updated>
     
     <summary type="html">
     
@@ -51,6 +57,10 @@
     
     </summary>
     
+      <category term="other" scheme="https://ke-fan.me/categories/other/"/>
+    
+    
+      <category term="other" scheme="https://ke-fan.me/tags/other/"/>
     
   </entry>
   
@@ -59,7 +69,7 @@
     <link href="https://ke-fan.me/posts/15200/"/>
     <id>https://ke-fan.me/posts/15200/</id>
     <published>2019-09-11T01:59:00.000Z</published>
-    <updated>2019-09-14T10:37:06.065Z</updated>
+    <updated>2019-12-22T23:05:59.604Z</updated>
     
     <summary type="html">
     
@@ -70,10 +80,10 @@
     
     </summary>
     
-      <category term="random" scheme="https://ke-fan.me/categories/random/"/>
+      <category term="other" scheme="https://ke-fan.me/categories/other/"/>
     
     
-      <category term="random" scheme="https://ke-fan.me/tags/random/"/>
+      <category term="other" scheme="https://ke-fan.me/tags/other/"/>
     
   </entry>
   
@@ -82,7 +92,7 @@
     <link href="https://ke-fan.me/posts/60052/"/>
     <id>https://ke-fan.me/posts/60052/</id>
     <published>2019-05-29T00:35:15.000Z</published>
-    <updated>2019-09-13T01:02:48.385Z</updated>
+    <updated>2019-12-22T23:08:17.859Z</updated>
     
     <summary type="html">
     
@@ -93,9 +103,9 @@
     
     </summary>
     
-      <category term="algorithm" scheme="https://ke-fan.me/categories/algorithm/"/>
+      <category term="Algorithm" scheme="https://ke-fan.me/categories/Algorithm/"/>
     
-      <category term="programming" scheme="https://ke-fan.me/categories/algorithm/programming/"/>
+      <category term="Programming" scheme="https://ke-fan.me/categories/Algorithm/Programming/"/>
     
     
       <category term="algorithm" scheme="https://ke-fan.me/tags/algorithm/"/>
@@ -107,7 +117,7 @@
     <link href="https://ke-fan.me/posts/41539/"/>
     <id>https://ke-fan.me/posts/41539/</id>
     <published>2019-04-27T23:56:57.000Z</published>
-    <updated>2019-06-04T21:54:15.774Z</updated>
+    <updated>2019-12-22T23:06:24.075Z</updated>
     
     <summary type="html">
     
@@ -118,6 +128,10 @@
     
     </summary>
     
+      <category term="other" scheme="https://ke-fan.me/categories/other/"/>
+    
+    
+      <category term="other" scheme="https://ke-fan.me/tags/other/"/>
     
   </entry>
   
@@ -151,7 +165,7 @@
     <link href="https://ke-fan.me/posts/63683/"/>
     <id>https://ke-fan.me/posts/63683/</id>
     <published>2019-02-13T20:54:02.000Z</published>
-    <updated>2019-03-04T20:59:31.549Z</updated>
+    <updated>2019-12-22T23:05:59.604Z</updated>
     
     <summary type="html">
     
@@ -165,6 +179,10 @@
       <category term="javascript" scheme="https://ke-fan.me/categories/javascript/"/>
     
     
+      <category term="javascript" scheme="https://ke-fan.me/tags/javascript/"/>
+    
+      <category term="algorithm" scheme="https://ke-fan.me/tags/algorithm/"/>
+    
   </entry>
   
   <entry>
@@ -172,7 +190,7 @@
     <link href="https://ke-fan.me/posts/16167/"/>
     <id>https://ke-fan.me/posts/16167/</id>
     <published>2019-02-11T17:50:29.000Z</published>
-    <updated>2019-03-04T14:28:57.601Z</updated>
+    <updated>2019-12-22T23:05:59.604Z</updated>
     
     <summary type="html">
     
@@ -186,6 +204,8 @@
       <category term="other" scheme="https://ke-fan.me/categories/other/"/>
     
     
+      <category term="other" scheme="https://ke-fan.me/tags/other/"/>
+    
   </entry>
   
   <entry>
@@ -193,7 +213,7 @@
     <link href="https://ke-fan.me/posts/43663/"/>
     <id>https://ke-fan.me/posts/43663/</id>
     <published>2019-01-01T05:00:00.000Z</published>
-    <updated>2019-12-19T18:15:58.765Z</updated>
+    <updated>2019-12-22T23:05:59.593Z</updated>
     
     <summary type="html">
     
@@ -204,6 +224,10 @@
     
     </summary>
     
+      <category term="other" scheme="https://ke-fan.me/categories/other/"/>
+    
+    
+      <category term="other" scheme="https://ke-fan.me/tags/other/"/>
     
   </entry>
   
