@@ -160,18 +160,17 @@
 
 
 
-  <meta name="description" content="在十二点钟声敲醒时，我正在北美大陆上空的云层上，透过飞机的玻璃看着被黑夜淹没的星空。机舱里一片安静，大部分乘客已经入睡，只有几个人还对着屏幕，电影画面将他们的脸庞晃的忽明忽暗。过去的十天是一个炎热的圣诞节，我吹过加勒比海岸的暖风，也曾经把全部头发浸入大西洋温暖的海水中。在狭小的船舱中摇摇晃晃的过了一周，如今终于要飞回家中。几个小时前，我在迈阿密的机场接到了飞机晚点的消息，我们对此无能为力，只能接受">
-<meta name="keywords" content="other">
+  <meta name="description" content="PrologueWhile I was doing my course on data structures and algorithms, I had a hard time trying to detect memory leaks in C++. Handling pointers are annoying especially when you have thousands lines o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018">
-<meta property="og:url" content="https://ke-fan.me/posts/62747/index.html">
+<meta property="og:title" content="Detecting C++ Memory Leaks using Valgrind on macOS Catalina">
+<meta property="og:url" content="https://ke-fan.me/posts/40077/index.html">
 <meta property="og:site_name" content="Kefan">
-<meta property="og:description" content="在十二点钟声敲醒时，我正在北美大陆上空的云层上，透过飞机的玻璃看着被黑夜淹没的星空。机舱里一片安静，大部分乘客已经入睡，只有几个人还对着屏幕，电影画面将他们的脸庞晃的忽明忽暗。过去的十天是一个炎热的圣诞节，我吹过加勒比海岸的暖风，也曾经把全部头发浸入大西洋温暖的海水中。在狭小的船舱中摇摇晃晃的过了一周，如今终于要飞回家中。几个小时前，我在迈阿密的机场接到了飞机晚点的消息，我们对此无能为力，只能接受">
+<meta property="og:description" content="PrologueWhile I was doing my course on data structures and algorithms, I had a hard time trying to detect memory leaks in C++. Handling pointers are annoying especially when you have thousands lines o">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-02T18:51:14.348Z">
+<meta property="og:updated_time" content="2020-02-16T21:51:01.920Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018">
-<meta name="twitter:description" content="在十二点钟声敲醒时，我正在北美大陆上空的云层上，透过飞机的玻璃看着被黑夜淹没的星空。机舱里一片安静，大部分乘客已经入睡，只有几个人还对着屏幕，电影画面将他们的脸庞晃的忽明忽暗。过去的十天是一个炎热的圣诞节，我吹过加勒比海岸的暖风，也曾经把全部头发浸入大西洋温暖的海水中。在狭小的船舱中摇摇晃晃的过了一周，如今终于要飞回家中。几个小时前，我在迈阿密的机场接到了飞机晚点的消息，我们对此无能为力，只能接受">
+<meta name="twitter:title" content="Detecting C++ Memory Leaks using Valgrind on macOS Catalina">
+<meta name="twitter:description" content="PrologueWhile I was doing my course on data structures and algorithms, I had a hard time trying to detect memory leaks in C++. Handling pointers are annoying especially when you have thousands lines o">
 
 
 
@@ -180,7 +179,7 @@
 
 
 
-  <link rel="canonical" href="https://ke-fan.me/posts/62747/">
+  <link rel="canonical" href="https://ke-fan.me/posts/40077/">
 
 
 
@@ -190,7 +189,7 @@
   };
 </script>
 
-  <title>2018 | Kefan</title>
+  <title>Detecting C++ Memory Leaks using Valgrind on macOS Catalina | Kefan</title>
   
 
 
@@ -429,7 +428,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ke-fan.me/posts/62747/">
+    <link itemprop="mainEntityOfPage" href="https://ke-fan.me/posts/40077/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kefan Dong">
@@ -446,7 +445,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2018
+          <h1 class="post-title" itemprop="name headline">Detecting C++ Memory Leaks using Valgrind on macOS Catalina
 
               
             
@@ -471,8 +470,8 @@
                 
               
 
-              <time title="Created: 2018-12-31 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00-05:00">
-                2018-12-31</time>
+              <time title="Created: 2020-02-16 16:10:04 / Modified: 16:51:01" itemprop="dateCreated datePublished" datetime="2020-02-16T16:10:04-05:00">
+                2020-02-16</time>
             
 
           
@@ -483,7 +482,7 @@
 
 
                 <span title="Symbols count in article">
-                  2.6k
+                  841
                 </span>
               
 
@@ -504,7 +503,7 @@
                 <!-- reading time approximation -->
                 
                 
-                  6 mins
+                  2 mins
                 
               </span>
               
@@ -548,16 +547,25 @@
       
 
       
-      <p>在十二点钟声敲醒时，我正在北美大陆上空的云层上，透过飞机的玻璃看着被黑夜淹没的星空。机舱里一片安静，大部分乘客已经入睡，只有几个人还对着屏幕，电影画面将他们的脸庞晃的忽明忽暗。过去的十天是一个炎热的圣诞节，我吹过加勒比海岸的暖风，也曾经把全部头发浸入大西洋温暖的海水中。在狭小的船舱中摇摇晃晃的过了一周，如今终于要飞回家中。几个小时前，我在迈阿密的机场接到了飞机晚点的消息，我们对此无能为力，只能接受要在天上跨年的现实。</p>
-<p>每年的这个时候，一个人总是会习惯性地回顾过去，想想在过去的一年中所发生的事情。也总是到了这个时候，我们才会发现在过去的一年中浪费了多少时间。曾经的理想没有勇气实现，过去的誓言也在重压之下无影无踪，不再提起。时光就这样顺着指尖溜走了。高中毕业以后，总觉得时间过的越来越快。大学的入学仪式仿佛还是前几周的事情，转眼间一个学期已经结束了；写简历时抓耳挠腮的感觉好像还停留在昨天，然而今天已经开始工作了。2019这个数字在脑海里是如此陌生，在填表的时候常常写错年份，来来回回打印了好几遍才上交。然而表格可以反复填写，错过的事情却再也没有机会挽留了。从理性上分析，这似乎是一件很残忍的事情，而我们却在成长的过程中却早已默认了这个事实——错过了就错过了，大过年的，不必为此忧心忡忡：“我还年轻，我还年轻”。我们躲在励志口号和激烈诗词的掩盖下，试图让自己相信美好的明天即将来临，然而在这些借口下面隐藏着的是空虚和犬儒，是被自己年轻的生命所掩盖的无能的本质。</p>
-<p>王小波曾经说过：人的一切痛苦，都是对自己无能的愤怒。前几年，我每天都很愤怒。不知道自己为什么而活，更不知道自己为谁而活。我发现自己所做的一切全无意义，不会对周围的事物产生任何变化。我不喜欢我生活的城市，我不喜欢我的生活方式，我不认同比我年龄大的人，我看不起比我小的人。而凌驾于这些感情之上的是我对自己的痛恨。我无法改变现状，只能随波逐流。面对向我迎面而来的浪潮，无法迎头而上，却又避无可避。我尝试从更加宏观的角度去思考这些问题，得到的答案却更加悲观。我感觉自己像一个对着大海发脾气的孩子，偶尔激起的几层浪花也只会消失在水里。在我的世界里，天空不动，河水向前，对答案的寻找越来越虚弱。我不是没有为改变而努力过，但一切努力似乎没有意义。经历了相遇和告别，我还是像一块石头滚来滚去。</p>
-<p>这就是2018年初时我所面对的状况。在过去的十二个月里发生了很多事情，有些很快就过去了，有些却怎么也无法忘记，这些无法忘记的事情便永远不会忘记。正式从高中毕业，告别了最后的温柔乡，我冲到了久违的自由当中。不仅仅是因为再没有作业和课堂，更因为我终于有机会来亲自动手决定我的去处——不再是家和学校之间单调的两点一线。几周之后，我回归了祖国炎热的怀抱。从爸妈那里拿了一点钱后，为了想清楚一些问题，我动身去了朝鲜，在丹东边境线彻底与一切失去了联系。回来之后又去了洛阳和西安，花了一晚爬了华山。站在云端，朝阳照在每个人的脸上，我发觉自己离真正的终点还有很长的距离。可下山的路上，我已经打定了主意。一天之后，我出现在了西宁的火车站，又过了几天，我租车去了青海湖。一路上，我穿梭在两片大山之间，天上的云一会离我很近，一会遥远。再后来的时候，我站在无限金黄的油菜花地里，感到了一种久违的解脱感。离我不远的青海湖是泥土流出的泪水。偶尔能看到马，他们的鼻子呼出暖气，嘴沉入湖面中饮水食盐。两年来，我经常梦想自己站在青海湖边，而现在我真的做到了。当天晚上，我住在全世界的夜晚或某个不知名客栈中，背靠殷实的大地，面朝冰冷的天空，回家的时候到了。</p>
-<p>引擎声拖动整片草原，我顺着国道越开越远。先是西宁，然后是定西，再后来的一串地名我已经忘记。几天后，我又回到了北京西站，再一次在一团昏暗的热泽中穿行。后面的事情范善可陈，总之好像是一转眼，我就回到了冰天雪地之中，又回到了学生们中。压力接踵而至，我在生活的缝隙里试图寻找喘息的空间。被课本和公式轰炸一通，最开始的锐气慢慢消减，但我已经不会陷入痛苦。因为在北京，在西安，在洛阳，在青海湖畔，华山绝顶，多年未见的邻居门口，朝鲜农民深陷的眼窝，在每一株小麦和每一滴海水里，我似乎找到了答案。我仿佛很老了，又好像很年轻；我仿佛拥有了一切，又好像一无所有。踌躇仿佛已经停止了，又好像尚未到来。青春仿佛已经结束了，$$又好像刚刚开始。</p>
-<p>$$<br>脱离苦海之后，我逃离了现场。来到了迈阿密，虽然一切过往离我而去，朋友们离我越来越远，但大海会给予每个人足够的宁静。在甲板上，我看到的景象和过去一亿三千万年中每一双眼睛在此所看到的一样。我在西印度群岛以北的海面上绕了一圈，发现临近赤道时，一片叶子也可以长满魔力。</p>
-<p>这是即将过去的这一年的尾声，绝对算得上完满。完满到上飞机的时候，我还难以想象今年的尽头是如此突兀。飞机起飞，手机关机。我闭上双眼，却难以入睡。18岁是我的黄金时代，可周围的世界却在飞速的旋转，一切格局都在越来越大。以前不懂的，现在不得不面对事实；以前了解的，现在却全然不懂。市场也在洗牌，每一把玩的越来越快。父辈们在中国二线城市写字楼中所积累的改革开放时期生存指南到现在已经无法使用，无论是学术圈还是娱乐圈都在准备迎接二十一世纪的百家争鸣，所有大骗子和假和尚，连同农贸市场如今全无踪迹，新来的事物却又无穷无尽。然而无论在什么时候，总有一些事情是无法改变的，我们所要做的就是尽量远离那些随潮涌来的浮叶，那些快餐式的，用完而弃的快乐和悲伤，而去拥抱那些真实的，具有实体的品质。</p>
-<p>话又说回来，假期结束之后，还是要脚踏实地的做一些东西。在船上没什么事情，看了很多书。有一些是技术方面的，大部分是小说和书信。我觉得以后会写一些感想的，可现在暂时还没有。最要紧的是学业方面的事情。学术上的学习告一段落，但是平时还是要以自学为主，因为马上要开始四个月的实习了。重心肯定还是要放在技术方面。虽然编程考的还行，可也只是因为我有一些很小的基础而已，要发展自己的能力还需要长久的摸索。自己生活是另外一个挑战，衣食住行都要考虑。这是我第一次彻底独自生活，以前无论是夏令营，还是大学的宿舍，总能得到来自家人的帮助。然而再过一周，我就要去一个离家300多公里的小城去生活了。人口不足五千，紧挨着圣劳伦斯河，气温寒冷，离最近的金士顿也要有30多公里的距离。离群索居，与世隔绝。听起来挺惨的，不过我倒是很向往这种生活，因为可以静下心来做一些事情了。</p>
-<p>用这样的方式来结束2018，实在有些意想不到。文章也不知不觉写得很长。从高中的结束到大学的开始，一口气说了很多东西。虽然大体上还是无可避免的沦为流水账，不过好歹是对过去有了个交代。那个惊心动魄的夏天已经过去很久，现在正值严冬。可推开窗户，那时的阳光依旧洒在我的书桌上。</p>
-<p>太阳看起来圆圆的。</p>
+      <h2 id="Prologue"><a href="#Prologue" class="headerlink" title="Prologue"></a>Prologue</h2><p>While I was doing my course on data structures and algorithms, I had a hard time trying to detect memory leaks in C++. Handling pointers are annoying especially when you have thousands lines of code and you’re not sure in which line a piece of memory is allocated but never freed before it goes out of scope. </p>
+<p>Valgrind is a tool designed to detect memory leaks, unfortunately, it does not run on macOS Catalina. I thought about running it instead on Waterloo’s linux server, then I realized as a student I do not have the root access. Since it seems like there are no better tools other than this, my final workaround is to run this on Azure, which is a nice service provided by Microsoft. </p>
+<p>I have provided all codes & bash commands used in the process, if Valgrind is something you need you can just follow this post step by step. </p>
+<p>Let’s get started.</p>
+<h2 id="Step-1-Setting-up-Azure"><a href="#Step-1-Setting-up-Azure" class="headerlink" title="Step 1: Setting up Azure"></a>Step 1: Setting up Azure</h2><p>Since the platform is Mac so first we use <code>brew</code> to install <code>azure-cli</code>, then creates a vm on our machine.</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ brew update && brew install azure-cli</span><br><span class="line">$ az login</span><br><span class="line">$ az group create --name myResources --location eastus</span><br><span class="line">$ az vm create --resource-group myResources \</span><br><span class="line">  --name myVM \</span><br><span class="line">  --image UbuntuLTS \</span><br><span class="line">  —-ssh-key-values ~/.ssh/id_rsa.pub \</span><br><span class="line">  --output json \</span><br><span class="line">  --verbose</span><br></pre></td></tr></tbody></table></figure>
+<p>Now the result would look like this :<br></p><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">  <span class="attr">"fqdns"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"id"</span>: <span class="string">"..."</span>,</span><br><span class="line">  <span class="attr">"location"</span>: <span class="string">"eastus"</span>,</span><br><span class="line">  <span class="attr">"macAddress"</span>: <span class="string">"..."</span>,</span><br><span class="line">  <span class="attr">"powerState"</span>: <span class="string">"VM running"</span>,</span><br><span class="line">  <span class="attr">"privateIpAddress"</span>: <span class="string">"..."</span>,</span><br><span class="line">  <span class="attr">"publicIpAddress"</span>: <public_ip_address>,</public_ip_address></span><br><span class="line">  <span class="attr">"resourceGroup"</span>: <span class="string">"TutorialResources"</span>,</span><br><span class="line">  <span class="attr">"zones"</span>: <span class="string">""</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>This is the VM created for which  <code>publicIpAddress</code> displays the IP address which is used to connect to the VM. So we connect like this:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh PUBLIC_IP_ADDRESS</span><br><span class="line">kevin@myVM:~$</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="Step-2-Use-Valgrind"><a href="#Step-2-Use-Valgrind" class="headerlink" title="Step 2: Use Valgrind"></a>Step 2: Use Valgrind</h2><p>Now we have successfully connected to the Azure server running Ubuntu from our terminal, the next thing we need to do is to actually use Valgrind. (Note: since many of the fundamental softwares such as <code>make</code> or <code>gcc</code> are not installed on the server, instead of install each of them manually I simply used <code>build-essential</code>, which includes everything we need)</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get -y update</span><br><span class="line">$ sudo apt-get install build-essential</span><br><span class="line">$ sudo apt-get install Valgrind</span><br><span class="line">$ mkdir v_test</span><br><span class="line">$ <span class="built_in">cd</span> v_test</span><br><span class="line">$ vi v_test.cpp</span><br></pre></td></tr></tbody></table></figure>
+<p>Just to simply test Valgrind’s ability, we write something like this:<br></p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> “stdlib.h”</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>{</span><br><span class="line">  <span class="keyword">int</span>* x = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(<span class="number">100</span> * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>This piece of close clearly demonstrates a leak of 100 * sizeof(int). If we apply Valgrind to check it, we would need to do this:</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ g++ main.cpp -o main</span><br><span class="line">$ valgrind --tool=memcheck --leak-check=full --show-reachable=yes --<span class="built_in">log</span>-file=“result” ./main</span><br></pre></td></tr></tbody></table></figure>
+<p>This command runs the <code>main</code> executable we just generated and output the result to a file named <code>result</code>. If we open this file, we would see this:<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">==114005== Memcheck, a memory error detector</span><br><span class="line">==114005== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.</span><br><span class="line">==114005== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info</span><br><span class="line">==114005== Command: ./main</span><br><span class="line">==114005== Parent PID: 110811</span><br><span class="line">==114005== </span><br><span class="line">==114005== </span><br><span class="line">==114005== HEAP SUMMARY:</span><br><span class="line">==114005==     in use at exit: 400 bytes in 1 blocks</span><br><span class="line">==114005==   total heap usage: 1 allocs, 0 frees, 400 bytes allocated</span><br><span class="line">==114005== </span><br><span class="line">==114005== 400 bytes in 1 blocks are definitely lost in loss record 1 of 1</span><br><span class="line">==114005==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)</span><br><span class="line">==114005==    by 0x10865B: main (in /home/kevin/valgrind_test/main)</span><br><span class="line">==114005== </span><br><span class="line">==114005== LEAK SUMMARY:</span><br><span class="line">==114005==    definitely lost: 400 bytes in 1 blocks</span><br><span class="line">==114005==    indirectly lost: 0 bytes in 0 blocks</span><br><span class="line">==114005==      possibly lost: 0 bytes in 0 blocks</span><br><span class="line">==114005==    still reachable: 0 bytes in 0 blocks</span><br><span class="line">==114005==         suppressed: 0 bytes in 0 blocks</span><br><span class="line">==114005== </span><br><span class="line">==114005== For counts of detected and suppressed errors, rerun with: -v</span><br><span class="line">==114005== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>We know an int has the size of 4 bytes, so a lost of 400 bytes makes sense. Now, if we correctly handles the pointer by freeing it at the end before the program terminates:<br></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">==114735== Command: ./main</span><br><span class="line">==114735== Parent PID: 110811</span><br><span class="line">==114735== </span><br><span class="line">==114735== </span><br><span class="line">==114735== HEAP SUMMARY:</span><br><span class="line">==114735==     in use at exit: 0 bytes in 0 blocks</span><br><span class="line">==114735==   total heap usage: 1 allocs, 1 frees, 400 bytes allocated</span><br><span class="line">==114735== </span><br><span class="line">==114735== All heap blocks were freed -- no leaks are possible</span><br><span class="line">==114735== </span><br><span class="line">==114735== For counts of detected and suppressed errors, rerun with: -v</span><br><span class="line">==114735== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>We can see now Valgrind tells us that no leaks are possible, which is what we wanted. </p>
+<p>So, next time before I’m handing in my project, I would just throw all my code on this server and runs Valgrind on all test cases to make sure no memory is leaked. </p>
+<p>Thanks for reading, I hope this helps.</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -643,12 +651,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/other/" rel="tag"># other</a>
-          
-        </div>
-      
 
       
       
@@ -658,15 +660,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/posts/25747/" rel="next" title="Fetching Github Stats using GraphQL in React">
+                <i class="fa fa-chevron-left"></i> Fetching Github Stats using GraphQL in React
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/43663/" rel="prev" title="Booklist 19">
-                Booklist 19 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -716,8 +718,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -860,6 +871,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prologue"><span class="nav-number">1.</span> <span class="nav-text">Prologue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Setting-up-Azure"><span class="nav-number">2.</span> <span class="nav-text">Step 1: Setting up Azure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Use-Valgrind"><span class="nav-number">3.</span> <span class="nav-text">Step 2: Use Valgrind</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
