@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ke-fan.me/"/>
-  <updated>2020-03-11T03:08:26.533Z</updated>
+  <updated>2020-03-29T19:15:30.940Z</updated>
   <id>https://ke-fan.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ke-fan.me/posts/40077/"/>
     <id>https://ke-fan.me/posts/40077/</id>
     <published>2020-02-16T21:10:04.000Z</published>
-    <updated>2020-03-11T03:08:26.533Z</updated>
+    <updated>2020-03-29T19:15:30.940Z</updated>
     
     <summary type="html">
     
@@ -32,6 +32,29 @@
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>Book20</title>
+    <link href="https://ke-fan.me/posts/38818/"/>
+    <id>https://ke-fan.me/posts/38818/</id>
+    <published>2020-01-01T15:00:00.000Z</published>
+    <updated>2020-03-29T19:18:15.104Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+      <category term="other" scheme="https://ke-fan.me/categories/other/"/>
+    
+    
+      <category term="other" scheme="https://ke-fan.me/tags/other/"/>
     
   </entry>
   
@@ -251,7 +274,7 @@
     <link href="https://ke-fan.me/posts/43663/"/>
     <id>https://ke-fan.me/posts/43663/</id>
     <published>2019-01-01T05:00:00.000Z</published>
-    <updated>2019-12-22T23:05:59.593Z</updated>
+    <updated>2020-03-29T19:15:40.832Z</updated>
     
     <summary type="html">
     
